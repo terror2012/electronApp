@@ -24,7 +24,7 @@
     "electron-updater": "^4.3.5"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/terror2012/electronApp.git"
+    "type": "git",
+    "url": "https://github.com/terror2012/electronApp.git"
   }
 }
