@@ -1,0 +1,20 @@
+Install node, last version https://nodejs.dev/
+Go to package.json and replace RepositoryURL with your github repo URL
+Go to electron-builder.yml and replace YourPersonalTokenHere with your github personal token
+Open a terminal and cd into the project folder.
+Run npm install
+After that, you can build your first version with the following command
+electron-builder build --win -p="always" -c="electron-builder.yml"
+The above command builds only for windows, to add linux as well, add --linux , and 
+for all 3 OSs, run the following command
+electron-builder build -mwl -p="always" -c="electron-builder.yml"
+
+For every update, you'd have to increment the version from package.json, from 1.0.0. 
+Any incrementation will be considered a new version
+Once that's done, you'll have a new tab in your repo called releases, where you will 
+have a draft of your application. Just press edit and then save, this will move it 
+from draft to release and thus be available to be updated next time an user starts 
+the application
+
+PS: You can set your repository to private, so the code/releases will be normally hidden, but
+the application will still be able
