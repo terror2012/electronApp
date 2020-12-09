@@ -146,7 +146,7 @@ app.on('ready', function() {
     tray = new Tray(iconPath)
     tray.on('click', function(e) {win.show()})
     tray.setContextMenu(Menu.buildFromTemplate([
-        { label: 'Show App', click:  function(){
+        { label: 'Show probeRTC', click:  function(){
             win.show();
         } },
         {

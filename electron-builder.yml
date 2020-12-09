@@ -1,0 +1,4 @@
+appId: com.testrtc.probertc
+publish: 
+  provider: github
+  token: YourPersonalTokenHere
