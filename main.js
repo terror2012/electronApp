@@ -87,7 +87,7 @@ function createWindow () {
     icon: iconPath
   })
 
-  win.loadURL(`https://probertc-staging.testrtc.com/?apiKey=${configJSON.apiKey}`)
+  win.loadURL(`https://probertc-staging.testrtc.com/?apiKey=${configJSON.apiKey}&autoStart=true`)
   win.setMenu(null)
 
   win.on('minimize', function(event) {
@@ -128,8 +128,8 @@ app.on('ready', function() {
         title: 'API Key | probeRTC',
         label: "API Key",
         type:"input",
-        height: 180,
-        alwaysOnTop: true
+        alwaysOnTop: true,
+        icon: iconPath
       }).then((r) => {
         if(r === null) {
           app.quit()
@@ -155,8 +155,8 @@ app.on('ready', function() {
               title: 'Change API Key | probeRTC',
               label: "API Key",
               type:"input",
-              height: 180,
-              alwaysOnTop: true
+              alwaysOnTop: true,
+              icon: iconPath
             }).then((r) => {
               if(r !== null) {
                 changeAPIKey(r)
