@@ -1,6 +1,6 @@
 {
   "name": "probertc",
-  "version": "1.3.0",
+  "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -16,7 +16,10 @@
     "appId": "com.testrtc.probertc",
     "productName": "probeRTC",
     "nsis": {
-      "license": "license.txt"
+      "license": "license.txt",
+      "deleteAppDataOnUninstall": true,
+      "guid": "probertc",
+      "include": "build/installer.nsh"
     }
   },
   "dependencies": {

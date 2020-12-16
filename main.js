@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, Tray, dialog } = require('electron')
+const { app, BrowserWindow, Menu, Tray, dialog, nativeImage } = require('electron')
 
 const electronLocalshortcut = require('electron-localshortcut');
 
@@ -49,7 +49,7 @@ if(!gotLock)
 function createMockupWindow() {
   mockupWin = new BrowserWindow({
     width: 800,
-    icon: iconPath,
+    icon: nativeImage.createFromPath(iconPath),
     height: 600,
     webPreferences: {
       nodeIntegration: true
@@ -84,7 +84,7 @@ function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: iconPath
+    icon: nativeImage.createFromPath(iconPath)
   })
 
   win.loadURL(`https://probertc-staging.testrtc.com/?apiKey=${configJSON.apiKey}&autoStart=true`)
@@ -143,7 +143,7 @@ app.on('ready', function() {
         }
       })
     }
-    tray = new Tray(iconPath)
+    tray = new Tray(nativeImage.createFromPath(iconPath))
     tray.on('click', function(e) {win.show()})
     tray.setContextMenu(Menu.buildFromTemplate([
         { label: 'Show probeRTC', click:  function(){
