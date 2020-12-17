@@ -6,24 +6,15 @@ const path = require('path')
 
 const prompt = require('electron-prompt')
 
-const fs = require('fs')
-
 const AutoLaunch = require('auto-launch')
 
 const { autoUpdater } = require('electron-updater')
 
+const storage = require('electron-json-storage')
+
 var iconPath = path.join(__dirname, 'resources', 'icon.png')
 
 var configJSON, win, tray, mockupWin;
-
-try {
-  configJSON = require(path.join(__dirname, 'resources', 'config.json'))
-} catch(err)
-{
-  console.log(err)
-  fs.writeFileSync(path.join(__dirname, 'resources', 'config.json'), JSON.stringify({}))
-  configJSON = {}
-}
 
 function changeAPIKey(key)
 {
@@ -35,8 +26,7 @@ function changeAPIKey(key)
     configJSON.apiKey = key;
   }
   configJSON.apiKey = configJSON.apiKey.charAt(0).toUpperCase() + configJSON.apiKey.substring(1)
-  fs.writeFileSync(path.join(__dirname, 'resources', 'config.json'), JSON.stringify(configJSON))
-
+  storage.set('configJSON', configJSON, (err) => {if(err) throw err;})
 }
 
 let gotLock = app.requestSingleInstanceLock();
@@ -116,6 +106,11 @@ autoUpdater.on('update-downloaded', (info) => {
 
 app.on('ready', function() {
   autoUpdater.checkForUpdates()
+  storage.get('configJSON', (err, data) => {
+    if(err) throw err;
+  
+    configJSON = data;
+
     if(configJSON.apiKey)
     {
       createWindow()
@@ -175,6 +170,8 @@ app.on('ready', function() {
             app.exit()
         } }
     ]))
+
+  })
 })
 
 app.on('activate', () => {
