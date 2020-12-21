@@ -4,7 +4,7 @@ Go to electron-builder.yml and replace YourPersonalTokenHere with your github pe
 Open a terminal and cd into the project folder.
 Run npm install
 After that, you can build your first version with the following command
-electron-builder build --win -p="always" -c="electron-builder.yml"
+electron-builder --win -p="always" -c="electron-builder.yml"
 The above command builds only for windows, to add linux as well, add --linux , and 
 for all 3 OSs, run the following command
 electron-builder build -mwl -p="always" -c="electron-builder.yml"

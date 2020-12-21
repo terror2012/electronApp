@@ -41,12 +41,14 @@ function createMockupWindow() {
     width: 800,
     icon: nativeImage.createFromPath(iconPath),
     height: 600,
+    title: "probeRTC",
     webPreferences: {
       nodeIntegration: true
     }
   })
 
   mockupWin.setMenu(null)
+  mockupWin.webContents.setAudioMuted(true);
 }
 
 let autoLaunch = new AutoLaunch({
@@ -74,11 +76,14 @@ function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    title: "probeRTC",
     icon: nativeImage.createFromPath(iconPath)
   })
 
   win.loadURL(`https://probertc-staging.testrtc.com/?apiKey=${configJSON.apiKey}&autoStart=true`)
   win.setMenu(null)
+
+  win.webContents.setAudioMuted(true);
 
   win.on('minimize', function(event) {
 
